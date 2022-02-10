@@ -1,0 +1,37 @@
+$widthOption: 110%;
+$hightOption: 40px;
+.select {
+  width: $widthOption;
+  position: relative;
+  .select_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    width: $widthOption;
+    height: 100%;
+  }
+  .select_body {
+    width: $widthOption;
+    position: absolute;
+    height: 500px;
+    bottom: -510px;
+    left: -5%;
+    overflow-y: scroll;
+    background-color: #16171b;
+    transition: 0.25s all ease-in-out;
+    opacity: 1;
+  }
+}
+.btn {
+  height: 50px;
+}
+.hide {
+  bottom: -530px !important;
+  opacity: 0 !important;
+}
+.displayNone {
+  display: none;
+}
+

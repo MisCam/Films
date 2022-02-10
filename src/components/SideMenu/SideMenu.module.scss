@@ -1,0 +1,77 @@
+$background: #25262c;
+$menuWidth: 430px;
+$buttonSize: 75px;
+$avatarSize: 70px;
+.wrapper {
+  background-color: $background;
+  width: $menuWidth;
+  height: 100%;
+  padding: 10px 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.35s ease-in-out;
+  .hideMenu {
+    position: absolute;
+    left: -$buttonSize + 3;
+    top: 0;
+    width: $buttonSize;
+    height: $buttonSize;
+    background-color: $background;
+    border-radius: 0 !important;
+    cursor: pointer;
+    img {
+      transform: rotate(-90deg);
+      transition: all 0.35s ease-in-out;
+    }
+  }
+  .account {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    .account__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .info__account_name {
+        font-weight: 500;
+        font-size: 25px;
+      }
+      .info__account_subscribe {
+        font-weight: normal;
+        font-size: 23px;
+        color: #6F7075;
+      }
+    }
+    .account__avatar {
+      background-color: #01b075;
+      box-shadow: 0px 0px 10px #01b075;
+      border-radius: 25px;
+      width: $avatarSize;
+      height: $avatarSize;
+    }
+  }
+}
+.hide {
+  right: -$menuWidth !important;
+}
+.rotated img {
+  transform: rotate(90deg) !important;
+}
+.buttonImage {
+    width: 25px;
+    height: 25px;
+}
+.SideMenuButton {
+    justify-content: flex-end !important;
+    padding: 0 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.buttonImage {
+    margin-left: 25px;
+}

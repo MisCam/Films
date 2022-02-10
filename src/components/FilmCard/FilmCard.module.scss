@@ -1,0 +1,34 @@
+.card {
+    width: 270px;
+    height: 435px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 30px;
+    .image {
+        width: 100%;
+        height: 370px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+    }
+    .title {
+        font-size: 25px;
+        font-weight: 500;
+    }
+    .type {
+        font-size: 23px;
+        font-weight: 500;
+    }
+    .free{
+        color: #01B075;
+    }
+    .notFree {
+        color: #FE4839;
+    }
+}

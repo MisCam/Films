@@ -1,0 +1,67 @@
+$background: #25262c;
+.filter_body {
+  width: 300px;
+  height: fit-content;
+  margin-right: 20px;
+  background-color: $background;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30px;
+  padding-top: 10px;
+  .filter {
+    font-size: 25px;
+    color: #efefef;
+  }
+  .filter_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    .years {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .text_form {
+            width: 40%;
+            padding-left: 15px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: transparent;
+            border: 1px solid #4d4e55;
+            transition: all 0.15s ease-in-out;
+        }
+        .text_form:focus {
+            border: 1px solid #70717c;
+        }
+        .line {
+            width: 10%;
+            height: 1px;
+            background-color: #efefef;
+        }
+    }
+    .search {
+        width: 100%;
+        margin-top: 20px;
+        padding-left: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background-color: transparent;
+        border: 1px solid #4d4e55;
+        transition: all 0.15s ease-in-out;
+    }
+    .search:focus {
+        border: 1px solid #70717c;
+    }
+  }
+  .apply {
+      margin-top: 20px;
+      height: 50px;
+  }
+}
