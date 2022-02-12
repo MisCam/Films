@@ -5,6 +5,14 @@ import PageLayout from '../PageLayout';
 
 import s from './AdminPanel.module.scss';
 const AdminPanel = (): React.ReactElement => {
+    const genresNames = [
+        'Триллер', 'Драма', 'Криминал', 'Мелодрама', 'Детектив',
+        'Фантастика', 'Приключения', 'Биография', 'Фильм-нуар', 'Вестерн',
+        'Боевик', 'Фэнтези', 'Комедия', 'Военный', 'История',
+        'Музыка', 'Ужасы', 'Мультфильм', 'Семейный', 'Мюзикл', 'Спорт',
+        'Документальный', 'Короткометражка', 'Аниме', 'Новости', 'Концепт',
+        'Для взрослых', 'Церемония', 'Реальное ТВ', 'Игра', 'Ток-Шоу', 'Детский',
+    ];
     const a = async (filmId: number) => {
         const answer = await fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${filmId}`, {
             method: 'GET',
@@ -19,6 +27,7 @@ const AdminPanel = (): React.ReactElement => {
     const uploadFilm = async function (
         title: string,
         genresId: string,
+        kinopoiskId: number,
         year: number,
         poster: string,
         description: string,
@@ -26,14 +35,7 @@ const AdminPanel = (): React.ReactElement => {
         ratingAgeLimits: number,
     ) {
         const answer = await fetch(
-            `http://CinemaLog/API/index.php/?method=uploadMovie
-            &title=${title}
-            &genresId=${genresId}
-            &year=${year}
-            &poster=${poster}
-            &description=${description}
-            &rating=${rating}
-            &ratingAgeLimits=${ratingAgeLimits}`
+            `http://CinemaLog/API/index.php/?method=uploadMovie&title=${title}&genres_id=${genresId}&year=${year}&poster=${poster}&description=${description}&rating=${rating}&kinopoisk_id=${kinopoiskId}&ratingAgeLimits=${ratingAgeLimits}`
         );
         const result = await answer.json();
         return result.data;
@@ -45,13 +47,18 @@ const AdminPanel = (): React.ReactElement => {
             a(i).then(value => {
                 let genres = '';
                 for(let j = 0; j < value.genres.length; j++){
-                    genres += value.genres[j].genre;
+                    for(let h = 0; h < genresNames.length; h++){
+                        if(value.genres[j].genre === genresNames[h].toLowerCase()){
+                            genres += h + 1;
+                        }
+                    }
                     if(j === value.genres.length - 1) continue;
                     genres += ',';
-                }
+                }              
                 uploadFilm(
                     value.nameRu,
                     genres,
+                    value.kinopoiskId,
                     value.year,
                     value.posterUrl,
                     value.description,
@@ -61,10 +68,10 @@ const AdminPanel = (): React.ReactElement => {
                 console.log('id ' + i + ' загружен');
             });
             i++;
-            if (i === 306) {
+            if (i === 1000) {
                 clearInterval(interval);
             }
-        }, 1000);
+        }, 1500);
     };
     return (
         <PageLayout className={s.page}>
