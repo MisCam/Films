@@ -43,35 +43,30 @@ const AdminPanel = (): React.ReactElement => {
 
     const Upload = () => {
         let i = 300;
-        const interval = setInterval(() => {
-            a(i).then(value => {
-                let genres = '';
-                for(let j = 0; j < value.genres.length; j++){
-                    for(let h = 0; h < genresNames.length; h++){
-                        if(value.genres[j].genre === genresNames[h].toLowerCase()){
-                            genres += h + 1;
-                        }
+        a(i).then(value => {
+            let genres = '';
+            for (let j = 0; j < value.genres.length; j++) {
+                for (let h = 0; h < genresNames.length; h++) {
+                    if (value.genres[j].genre === genresNames[h].toLowerCase()) {
+                        genres += h + 1;
                     }
-                    if(j === value.genres.length - 1) continue;
-                    genres += ',';
-                }              
-                uploadFilm(
-                    value.nameRu,
-                    genres,
-                    value.kinopoiskId,
-                    value.year,
-                    value.posterUrl,
-                    value.description,
-                    value.ratingKinopoisk,
-                    parseInt(value.ratingAgeLimits.substr(3))
-                );
-                console.log('id ' + i + ' загружен');
-            });
-            i++;
-            if (i === 1000) {
-                clearInterval(interval);
+                }
+                if (j === value.genres.length - 1) continue;
+                genres += ',';
             }
-        }, 1500);
+            uploadFilm(
+                value.nameRu,
+                genres,
+                value.kinopoiskId,
+                value.year,
+                value.posterUrl,
+                value.description,
+                value.ratingKinopoisk,
+                parseInt(value.ratingAgeLimits.substr(3))
+            );
+            console.log('id ' + i + ' загружен');
+        });
+        i++;
     };
     return (
         <PageLayout className={s.page}>

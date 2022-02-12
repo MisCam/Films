@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'clsx';
 
 import FilmCard from '../FilmCard';
@@ -12,6 +12,31 @@ type CatalogProps = {
 };
 
 const Catalog = (props: CatalogProps): React.ReactElement => {
+    const [films, setFilms] = useState([
+        {
+            id: '',
+            title: '',
+            genres_id: '',
+            year: '',
+            poster: '',
+            kinopoisk_id: '',
+            description: '',
+            rating: '',
+            ratingAgeLimits: ''
+        }
+    ]);
+    const getFilms = async function () {
+        const answer = await fetch(
+            `http://CinemaLog/API/index.php/?method=getAllMovies`
+        );
+        const result = await answer.json();
+        return result.data;
+    };
+    useEffect(() => {
+        getFilms().then(value => {
+            setFilms(value);
+        });
+    });
     return (
         <PageLayout className={s.pl0}>
             <div className={s.page}>
@@ -20,8 +45,16 @@ const Catalog = (props: CatalogProps): React.ReactElement => {
                     <div className={s.title}>Каталог</div>
                     <div className={s.cards}>
                         {
-                            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((value, index) => (
-                                <FilmCard key={index} isFree={true} title={'Всё прошло хорошо'}></FilmCard>
+                            films.map((value, index) => (
+                                <FilmCard
+                                    key={index}
+                                    poster={value.poster}
+                                    title={value.title}
+                                    year={value.year}
+                                    genres={value.genres_id}
+                                    rating={value.rating}
+                                    ageLimits={value.ratingAgeLimits}
+                                ></FilmCard>
                             ))
                         }
                     </div>

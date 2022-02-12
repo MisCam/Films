@@ -18,9 +18,9 @@ const Favorite = (props: FavoriteProps): React.ReactElement => {
                     <div className={s.title}>Избранное</div>
                     <div className={s.cards}>
                         {
-                            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((value, index) => (
+                            /* [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((value, index) => (
                                 <FilmCard key={index} isFree={true} title={'Всё прошло хорошо'}></FilmCard>
-                            ))
+                            )) */
                         }
                     </div>
                 </div>

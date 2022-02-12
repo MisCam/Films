@@ -6,6 +6,7 @@ $avatarSize: 70px;
   background-color: $background;
   width: $menuWidth;
   height: 100%;
+  z-index: 1000;
   padding: 10px 30px;
   position: absolute;
   top: 0;

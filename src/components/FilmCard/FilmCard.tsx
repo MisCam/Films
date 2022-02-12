@@ -5,28 +5,25 @@ import s from './FilmCard.module.scss';
 
 type FilmCardProps = {
     title: string;
-    isFree: boolean;
+    poster: string;
+    rating: string;
+    genres: string;
+    year: string;
+    ageLimits: string;
 };
-/*
-Получаемые с сервака данные для карточки:
-posterUrlPreview как ссылка на картинку
-ratingAgeLimits как строка age15
-ratingKinopoisk как число 8.5
-year как число 1999
-id как число 123
-FilmLength как число 136 минут
-genres как массив объектов [ {genre: фантастика}, {genre: боевик}]
-*/
-const FilmCard = (props: FilmCardProps) : React.ReactElement => {
+const FilmCard = (props: FilmCardProps): React.ReactElement => {
     return (
         <div className={s.card}>
             <div className={s.image}>
-                <img src='https://kinopoiskapiunofficial.tech/images/posters/kp/301.jpg' alt='poster'/>
-            </div>  
+                <div className={s.shortInfo}>
+                    <label><span className={s.green}>Рейтинг:</span> {props.rating}/10</label>
+                    <label><span className={s.green}>Жанры:</span> {props.genres}</label>
+                    <label><span className={s.green}>Год</span>: {props.year}</label>
+                </div>
+                <div className={s.ageLimits}>{props.ageLimits}+</div>
+                <img src={props.poster} alt='poster' />
+            </div>
             <label className={s.title}>{props.title}</label>
-            <label className={cn(s.type, props.isFree ? s.free : s.notFree)}>
-                {props.isFree ? 'Бесплатный' : 'Платный'}
-            </label>
         </div>
     );
 };
